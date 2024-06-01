@@ -1,0 +1,373 @@
+/* Estilos Gerais */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header, footer {
+    background-color: #4682b4;
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+main {
+    flex: 1;
+    max-width: 100ch; /* Atualização para o tamanho máximo do conteúdo */
+    margin: 20px auto;
+    padding: 1em;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#filterContainer {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#filterCount {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+.dialog {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 500px;
+    width: 90%;
+    margin: auto;
+    position: relative;
+}
+
+#filterForm {
+    display: grid;
+    grid-template-columns: 1fr; /* Alterado para uma coluna em resoluções menores */
+    gap: 15px;
+}
+
+@media (min-width: 760px) {
+    #filterForm {
+        grid-template-columns: 1fr 1fr; /* Alterado para duas colunas em resoluções maiores */
+    }
+}
+
+#filterForm h2 {
+    grid-column: span 2;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#filterForm label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#filterForm input,
+#filterForm select {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#filterForm input:focus,
+#filterForm select:focus {
+    border-color: #4682b4;
+    box-shadow: 0 0 5px rgba(70, 130, 180, 0.5);
+}
+
+#filterForm menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    grid-column: span 2;
+    margin-top: 10px;
+}
+
+#filterForm button {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1em;
+    position: relative;
+    overflow: hidden;
+}
+
+#filterForm button:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, left 0.3s ease;
+    z-index: 0;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+}
+
+#filterForm button:hover:after {
+    width: 300%;
+    height: 300%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#filterForm #cancel {
+    background: #ccc;
+    color: black;
+}
+
+#filterForm #cancel:hover {
+    background: #bbb;
+}
+
+#filterForm #applyFilters {
+    background: #4682b4;
+    color: white;
+}
+
+#filterForm #applyFilters:hover {
+    background: #5a9bd4;
+}
+
+#closeModal {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#closeModal:hover {
+    color: #333;
+}
+
+#news-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.news-article {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 20px;
+}
+
+.news-article img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.news-article .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.news-article h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.news-article p {
+    font-size: 1em;
+    color: #666;
+    margin: 10px 0;
+}
+
+.news-article .news-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.news-article .news-footer .days-since-published {
+    font-size: 0.9em;
+    color: #999;
+}
+
+.news-article button {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.news-article button:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, left 0.3s ease;
+    z-index: 0;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+}
+
+.news-article button:hover:after {
+    width: 300%;
+    height: 300%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#pagination {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#pagination li {
+    margin: 0 5px;
+}
+
+.page-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.page-button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.page-button.active {
+    background-color: #4682b4;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Adiciona posição absoluta ao botão de busca */
+.search-container {
+    position: relative;
+    display: inline-block;
+}
+
+.search-container input {
+    padding-right: 40px; /* Adiciona espaço para o botão */
+}
+
+.search-container button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background: none; /* Remover o fundo */
+    border: none; /* Remover a borda */
+    font-size: 1.2em; /* Ajustar o tamanho da fonte */
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+    main {
+        padding: 2em;
+    }
+
+    form input {
+        margin-right: 15px;
+    }
+
+    form button {
+        padding: 0.75em 1.5em;
+    }
+
+    .news-article {
+        padding: 20px;
+    }
+
+    .news-article h2 {
+        font-size: 1.75em;
+    }
+
+    .news-article p {
+        font-size: 1.1em;
+    }
+
+    .news-article button {
+        font-size: 1.1em;
+        padding: 14px;
+    }
+
+    .days-since-published {
+        font-size: 1em;
+    }
+
+    #pagination li {
+        margin: 0 10px;
+    }
+
+    .page-button {
+        padding: 12px 20px;
+        font-size: 1.1em;
+    }
+}
+
+@media (min-width: 1024px) {
+    main {
+        max-width: 1200px;
+    }
+}

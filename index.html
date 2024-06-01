@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Notícias do IBGE</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <h1>Portal de Notícias do IBGE</h1>
+        <form id="searchForm" class="form-inline justify-content-center">
+            <div class="search-container">
+                <input type="text" name="busca" id="inputBusca" class="form-control" placeholder="Buscar notícia por termo">
+                <button type="submit" class="search-button">🔍</button> <!-- Alterado para um estilo personalizado -->
+            </div>
+            <div id="filterContainer" class="ml-3">
+                <svg
+                    id="filterIcon"
+                    width="20"
+                    height="20"
+                    fill="#f0f0f0"
+                    viewBox="0 0 80 90"
+                    focusable="false"
+                    xmlns="http://www.w3.org/2000/svg"
+                    onclick="openFilterModal()"
+                >
+                    <path d="m 0,0 30,45 0,30 10,15 0,-45 30,-45 Z"></path>
+                </svg>
+                <span id="filterCount"></span>
+            </div>
+        </form>
+    </header>
+
+    <main>
+        <div id="news-container"></div>
+        <ul id="pagination" class="pagination"></ul>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Portal de Notícias do IBGE. Todos os direitos reservados.</p>
+    </footer>
+    
+    <dialog id="filterModal">
+        <form method="dialog" id="filterForm">
+            <h2>Filtros <button type="button" id="closeModal" class="close">&times;</button></h2>
+            <div class="form-group">
+                <label for="tipo"><i class="fas fa-list"></i> Tipo:</label>
+                <select id="tipo" name="tipo" class="form-control">
+                    <option value="">Todos</option>
+                    <option value="noticia">Notícias</option>
+                    <option value="release">Releases</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantidade"><i class="fas fa-sort-amount-up"></i> Quantidade:</label>
+                <select id="quantidade" name="quantidade" class="form-control">
+                    <option value="5">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="de"><i class="fas fa-calendar-alt"></i> De:</label>
+                <input type="date" id="de" name="de" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="ate"><i class="fas fa-calendar-alt"></i> Até:</label>
+                <input type="date" id="ate" name="ate" class="form-control">
+            </div>
+            <menu class="form-group d-flex justify-content-end">
+                <button type="reset" id="cancel" class="btn btn-secondary mr-2">Cancelar</button>
+                <button type="submit" id="applyFilters" class="btn btn-primary">Aplicar</button>
+            </menu>
+        </form>
+    </dialog>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
