@@ -22,12 +22,14 @@ header h1 {
 
 main {
     flex: 1;
-    max-width: 100ch; /* Atualização para o tamanho máximo do conteúdo */
+    max-width: 100ch;
     margin: 20px auto;
     padding: 1em;
     background-color: #f0f0f0;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Garante que o main se ajuste à largura da tela */
+    max-width: 100%; /* Garante que o main não ultrapasse a largura máxima */
 }
 
 #filterContainer {
@@ -60,13 +62,13 @@ main {
 
 #filterForm {
     display: grid;
-    grid-template-columns: 1fr; /* Alterado para uma coluna em resoluções menores */
+    grid-template-columns: 1fr;
     gap: 15px;
 }
 
 @media (min-width: 760px) {
     #filterForm {
-        grid-template-columns: 1fr 1fr; /* Alterado para duas colunas em resoluções maiores */
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -174,6 +176,8 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%; /* Garante que o contêiner de notícias se ajuste à largura da tela */
+    max-width: 100%; /* Garante que o contêiner de notícias não ultrapasse a largura máxima */
 }
 
 .news-article {
@@ -186,6 +190,8 @@ main {
     display: grid;
     grid-template-columns: 250px 1fr;
     gap: 20px;
+    width: 100%; /* Garante que o artigo de notícias se ajuste à largura da tela */
+    max-width: 100%; /* Garante que o artigo de notícias não ultrapasse a largura máxima */
 }
 
 .news-article img {
@@ -199,18 +205,22 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 100%; /* Garante que o conteúdo se ajuste à largura da tela */
+    max-width: 100%; /* Garante que o conteúdo não ultrapasse a largura máxima */
 }
 
 .news-article h2 {
     font-size: 1.5em;
     color: #333;
     margin: 0 0 10px 0;
+    word-break: break-word;
 }
 
 .news-article p {
     font-size: 1em;
     color: #666;
     margin: 10px 0;
+    word-break: break-word;
 }
 
 .news-article .news-footer {
@@ -236,6 +246,8 @@ main {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    width: auto;
+    max-width: 100%; /* Garante que o botão não ultrapasse a largura do contêiner */
 }
 
 .news-article button:after {
@@ -300,14 +312,13 @@ footer p {
     margin: 0;
 }
 
-/* Adiciona posição absoluta ao botão de busca */
 .search-container {
     position: relative;
     display: inline-block;
 }
 
 .search-container input {
-    padding-right: 40px; /* Adiciona espaço para o botão */
+    padding-right: 40px;
 }
 
 .search-container button {
@@ -316,9 +327,9 @@ footer p {
     right: 10px;
     transform: translateY(-50%);
     cursor: pointer;
-    background: none; /* Remover o fundo */
-    border: none; /* Remover a borda */
-    font-size: 1.2em; /* Ajustar o tamanho da fonte */
+    background: none;
+    border: none;
+    font-size: 1.2em;
 }
 
 /* Responsividade */
@@ -369,5 +380,181 @@ footer p {
 @media (min-width: 1024px) {
     main {
         max-width: 1200px;
+    }
+}
+
+/* Adicionando responsividade para resoluções menores */
+@media (max-width: 545px) {
+    main {
+        padding: 1em;
+    }
+
+    .news-article {
+        grid-template-columns: 1fr;
+    }
+
+    .news-article img {
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .news-article h2 {
+        font-size: 1.3em;
+    }
+
+    .news-article p {
+        font-size: 0.95em;
+    }
+
+    .news-article button {
+        font-size: 0.9em;
+        padding: 8px 16px;
+        width: 100%;
+    }
+
+    #pagination {
+        padding: 0;
+        margin-top: 15px;
+    }
+
+    .page-button {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 400px) {
+    main {
+        padding: 0.5em;
+    }
+
+    .news-article {
+        padding: 10px;
+    }
+
+    .news-article h2 {
+        font-size: 1.2em;
+    }
+
+    .news-article p {
+        font-size: 0.9em;
+    }
+
+    .news-article button {
+        font-size: 0.85em;
+        padding: 6px 12px;
+        width: 100%;
+    }
+
+    #pagination {
+        padding: 0;
+        margin-top: 10px;
+    }
+
+    .page-button {
+        padding: 6px 10px;
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 300px) {
+    main {
+        padding: 0.25em;
+    }
+
+    .news-article {
+        padding: 5px;
+    }
+
+    .news-article h2 {
+        font-size: 1.1em;
+    }
+
+    .news-article p {
+        font-size: 0.85em;
+    }
+
+    .news-article button {
+        font-size: 0.8em;
+        padding: 5px 10px;
+        width: 100%;
+    }
+
+    #pagination {
+        padding: 0;
+        margin-top: 5px;
+    }
+
+    .page-button {
+        padding: 4px 8px;
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 250px) {
+    main {
+        padding: 0.1em;
+    }
+
+    .news-article {
+        padding: 3px;
+    }
+
+    .news-article h2 {
+        font-size: 1em;
+    }
+
+    .news-article p {
+        font-size: 0.75em;
+    }
+
+    .news-article button {
+        font-size: 0.75em;
+        padding: 3px 6px;
+        width: 100%;
+    }
+
+    #pagination {
+        padding: 0;
+        margin-top: 2px;
+    }
+
+    .page-button {
+        padding: 2px 4px;
+        font-size: 0.75em;
+    }
+}
+
+@media (max-width: 200px) {
+    main {
+        padding: 0.05em;
+    }
+
+    .news-article {
+        padding: 2px;
+    }
+
+    .news-article h2 {
+        font-size: 0.9em;
+    }
+
+    .news-article p {
+        font-size: 0.7em;
+    }
+
+    .news-article button {
+        font-size: 0.7em;
+        padding: 2px 4px;
+        width: 100%;
+    }
+
+    #pagination {
+        padding: 0;
+        margin-top: 1px;
+    }
+
+    .page-button {
+        padding: 2px 3px;
+        font-size: 0.7em;
     }
 }
