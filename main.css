@@ -8,16 +8,56 @@ body {
     min-height: 100vh;
 }
 
-header, footer {
+header {
     background-color: #4682b4;
     color: white;
     padding: 1em;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
 
 header h1 {
     margin: 0;
     font-size: 2em;
+}
+
+.search-and-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 1em;
+    position: relative;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+}
+
+#filterContainer {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+
+#filterContainer svg {
+    fill: #f0f0f0;
+    width: 24px;
+    height: 24px;
+}
+
+#filterCount {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 12px;
 }
 
 main {
@@ -30,23 +70,6 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%; /* Garante que o main se ajuste à largura da tela */
     max-width: 100%; /* Garante que o main não ultrapasse a largura máxima */
-}
-
-#filterContainer {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-#filterCount {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background: red;
-    color: white;
-    border-radius: 50%;
-    padding: 2px 5px;
-    font-size: 12px;
 }
 
 .dialog {

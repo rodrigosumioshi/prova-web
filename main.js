@@ -139,8 +139,8 @@ function displayNews(newsItems) {
 
         const daysSincePublished = document.createElement('span');
         daysSincePublished.classList.add('days-since-published');
-        const days = calculateDaysSince(item.data_publicacao);
-        daysSincePublished.textContent = `Publicado há ${days}`;
+        const daysText = calculateDaysSince(item.data_publicacao);
+        daysSincePublished.textContent = daysText;
         
         const editorias = document.createElement('p');
         if (Array.isArray(item.editorias)) {
@@ -178,9 +178,9 @@ function calculateDaysSince(publicationDate) {
     const diffTime = Math.abs(now - publication);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     
-    if (diffDays === 0) return "hoje";
-    if (diffDays === 1) return "ontem";
-    return `${diffDays} dias`;
+    if (diffDays === 0) return "publicado hoje";
+    if (diffDays === 1) return "publicado ontem";
+    return `publicado há ${diffDays} dias`;
 }
 
 function setupPagination(totalResults, itemsPerPage, currentPage) {

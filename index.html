@@ -11,12 +11,14 @@
 <body>
     <header>
         <h1>Portal de Notícias do IBGE</h1>
-        <form id="searchForm" class="form-inline justify-content-center">
-            <div class="search-container">
-                <input type="text" name="busca" id="inputBusca" class="form-control" placeholder="Buscar notícia por termo">
-                <button type="submit" class="search-button">🔍</button> <!-- Alterado para um estilo personalizado -->
-            </div>
-            <div id="filterContainer" class="ml-3">
+        <div class="search-and-filter">
+            <form id="searchForm" class="form-inline justify-content-center">
+                <div class="search-container">
+                    <input type="text" name="busca" id="inputBusca" class="form-control" placeholder="Buscar notícia por termo">
+                    <button type="submit" class="search-button">🔍</button>
+                </div>
+            </form>
+            <div id="filterContainer" onclick="openFilterModal()">
                 <svg
                     id="filterIcon"
                     width="20"
@@ -25,13 +27,12 @@
                     viewBox="0 0 80 90"
                     focusable="false"
                     xmlns="http://www.w3.org/2000/svg"
-                    onclick="openFilterModal()"
                 >
                     <path d="m 0,0 30,45 0,30 10,15 0,-45 30,-45 Z"></path>
                 </svg>
                 <span id="filterCount"></span>
             </div>
-        </form>
+        </div>
     </header>
 
     <main>
