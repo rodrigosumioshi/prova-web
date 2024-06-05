@@ -72,6 +72,16 @@ main {
     max-width: 100%; /* Garante que o main não ultrapasse a largura máxima */
 }
 
+footer {
+    background-color: #4682b4;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
 .dialog {
     border: none;
     border-radius: 8px;
