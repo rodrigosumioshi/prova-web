@@ -164,23 +164,24 @@ function displayNews(newsItems) {
 function calculateDaysSince(publicationDate) {
     if (!publicationDate) return "data desconhecida";
 
-    const [datePart, timePart] = publicationDate.split(' ');
-    const [day, month, year] = datePart.split('/');
-    const formattedDate = `${year}-${month}-${day}T${timePart}`;
-    const publication = new Date(formattedDate);
+    try {
+        const publication = new Date(publicationDate);
 
-    if (isNaN(publication)) {
-        console.error('Data de publicação inválida:', publicationDate);
+        if (isNaN(publication)) {
+            throw new Error('Data de publicação inválida');
+        }
+
+        const now = new Date();
+        const diffTime = Math.abs(now - publication);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays === 0) return "publicado hoje";
+        if (diffDays === 1) return "publicado ontem";
+        return `publicado há ${diffDays} dias`;
+    } catch (error) {
+        console.error('Erro ao calcular data:', error.message, publicationDate);
         return "data inválida";
     }
-    
-    const now = new Date();
-    const diffTime = Math.abs(now - publication);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    
-    if (diffDays === 0) return "publicado hoje";
-    if (diffDays === 1) return "publicado ontem";
-    return `publicado há ${diffDays} dias`;
 }
 
 function setupPagination(totalResults, itemsPerPage, currentPage) {
